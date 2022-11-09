@@ -1,0 +1,39 @@
+
+{% load static %}
+
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="d-flex">
+            <div class="avatar">
+                <img src="{% static 'img/picture.png' %}">
+            </div>
+            <div class="text-start">
+                <a href="{% url 'question' question_id=question.id %}">
+                    <h5 class="card-title">{{ question.title }}</h5>
+                </a>
+                <p class="card-text">{{ question.text }}</p>
+                <div class="d-flex d-grid gap-3 align-items-baseline">
+                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    <p class="text-bold">
+                        1
+                    </p>
+                </div>
+                <div class="d-flex d-grid gap-3 mb-3">
+                    <button type="button" class="btn btn-primary">Like</button>
+                    <button type="button" class="btn btn-danger">Dislike</button>
+                </div>
+                <div class="d-flex d-grid gap-3">
+                    <a href="#">answer ({{ question.answers_number }})</a>
+                    <div class="d-flex d-grid gap-1">
+                        <p>Tags:</p>
+                        <div class="d-flex d-grid gap-2">
+                            {% for tag in question.tags %}
+                                <a href="/tag/{{ tag }}">{{ tag }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

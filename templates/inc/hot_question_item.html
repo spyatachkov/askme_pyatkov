@@ -1,0 +1,28 @@
+{% load static %}
+
+<div class="card mb-2">
+    <div class="card-body">
+        <div class="d-flex">
+            <div class="avatar">
+                <img src="{% static 'img/picture.png' %}">
+            </div>
+            <div class="text-start">
+                <a href="">
+                    <h5 class="card-title">{{ question.title }}</h5>
+                </a>
+                <p class="card-text">{{ question.text }}</p>
+                <div class="d-flex d-grid gap-3">
+                    <a href="#">answer ({{question.answers_number}})</a>
+                    <div class="d-flex d-grid gap-1">
+                        <p>Tags:</p>
+                        <div class="d-flex d-grid gap-2">
+                            {% for tag in question.tags %}
+                                <a href="/tag/{{ tag }}">{{ tag }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

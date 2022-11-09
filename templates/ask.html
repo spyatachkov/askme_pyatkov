@@ -1,107 +1,43 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WEB1</title>
-    <link href="../static/css/bootstrap.css" rel="stylesheet">
-    <link href="../static/css/styles.css" rel="stylesheet">
-</head>
-<body>
-<header class="p-3 border-bottom bg-light">
-    <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between ">
-            <a href="index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-decoration-none">
-                AskPyatkov
-                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Logo">
-                    <use xlink:href="#logo"/>
-                </svg>
-            </a>
-            <div class="d-flex flex-wrap">
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                    <input type="search" class="form-control form-control-dark" placeholder="Search..."
-                           aria-label="Search">
-                </form>
-                <button type="button" class="btn btn-primary">ASK!</button>
-            </div>
-            <div class="text-end">
-                <div class="d-flex flex-wrap">
-                    <div>
-                        <a href="">log in</a>
-                        <a href="">register</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-<div class="container text-center">
-    <div class="row">
-        <div class="col-10">
-            <div class="title text-start">
-                <h3 class="">New Questions</h3>
-            </div>
-            <div class="col-sm-10">
-                <form>
-                    <div class="row g-3 align-items-center">
-                        <div class="col-1">
-                            <label for="inputPassword6" class="col-form-label">Title</label>
-                        </div>
-                        <div class="col-6">
-                            <input type="" id="inputPassword6" class="form-control" aria-describedby="">
-                        </div>
-                    </div>
-                    <div class="d-flex row g-3 align-items-center mt-2">
-                        <div class="col-1">
-                            <label for="inputPassword6" class="col-form-label">Text</label>
-                        </div>
-                        <div class="col-6">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                                      style="height: 100px"></textarea>
-                        </div>
-                    </div>
-                    <div class="row g-3 align-items-center mt-2">
-                        <div class="col-1">
-                            <label for="inputPassword6" class="col-form-label">Tags</label>
-                        </div>
-                        <div class="col-6">
-                            <input type="" id="inputPassword6" class="form-control" aria-describedby="">
-                        </div>
-                    </div>
-                    <div class="d-flex mt-3 mb-2" style="margin-left: 75px">
-                        <button type="submit" class="btn btn-primary">ASK!</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="title text-start d-flex">
-                <div>
-                    <h5 class="">Popular Tags</h5>
-                    <div class="">
-                        <a href="">perl</a>
-                        <a href="">python</a>
-                        <a href="">technopark</a>
-                        <a href="">MySQL</a>
-                    </div>
-                </div>
-            </div>
-            <div class="title text-start d-flex">
-                <div>
-                    <h5>Best Members</h5>
-                    <div class="d-flex flex-column">
-                        <a href="">Mr. Freeman</a>
-                        <a href="">Dr. House</a>
-                        <a href="">Alex</a>
-                        <a href="">V. Pupkin</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-            crossorigin="anonymous"></script>
+{% extends "inc/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="title text-start">
+    <h3 class="">New Questions</h3>
 </div>
-</body>
-</html>
+<div class="col-sm-10">
+    <p class="text-danger text-start">Sorry, error!</p>
+    <form>
+        <div class="row g-3 align-items-center">
+            <div class="col-1">
+                <label for="" class="col-form-label">Title</label>
+            </div>
+            <div class="col-6">
+                <input type="" id="" class="form-control" aria-describedby="">
+            </div>
+        </div>
+        <div class="d-flex row g-3 align-items-center mt-2">
+            <div class="col-1">
+                <label for="" class="col-form-label">Text</label>
+            </div>
+            <div class="col-6">
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                          style="height: 100px"></textarea>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center mt-2">
+            <div class="col-1">
+                <label for="inputPassword6" class="col-form-label">Tags</label>
+            </div>
+            <div class="col-6">
+                <input type="" id="inputPassword6" class="form-control" aria-describedby="">
+            </div>
+        </div>
+        <div class="d-flex mt-3 mb-2" style="margin-left: 75px">
+            <button type="submit" class="btn btn-primary">ASK!</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

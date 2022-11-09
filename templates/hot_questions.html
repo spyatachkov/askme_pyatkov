@@ -4,12 +4,11 @@
 {% block content %}
 
 <div class="title text-start d-flex align-items-baseline d-grid gap-3">
-    <h3 class="">Tag:</h3>
-    <h3>{{ tag_name }}</h3>
+    <h3 class="">Hot questions</h3>
 </div>
 <div class="col-sm-10">
     {% for question in questions %}
-        {% include 'inc/question_item.html' %}
+        {% include 'inc/hot_question_item.html' %}
     {% endfor %}
 </div>
 
