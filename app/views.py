@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from . import models
+from .models import Question, Answer, Tag, Profile
 
 authFlag = True
 
@@ -19,51 +19,52 @@ def paginate(object_list, request):
 
 
 def index(request):
-    context = {'questions': paginate(models.QUESTIONS, request), 'is_auth': authFlag}
+    context['questions'] = paginate(Question.objects.new(), request)
     return render(request, 'index.html', context=context)
 
 
 def question(request, question_id: int):
-    context = {'is_auth': authFlag}
     try:
-        question_item = models.QUESTIONS[question_id]
-        context = {'question': question_item, 'is_auth': authFlag}
+        context['question'] = Question.objects.get(pk=question_id)
+        context['answers'] = Answer.objects.hot(question_id)
         return render(request, 'question.html', context=context)
-
     except:
         return render(request, '404.html', context=context)
 
 
 def signup(request):
-    context = {'is_auth': authFlag}
     return render(request, 'signup.html', context=context)
 
 
 def login(request):
-    context = {'is_auth': authFlag}
     return render(request, 'login.html', context=context)
 
 
 def settings(request):
-    context = {'is_auth': authFlag}
     return render(request, 'settings.html', context=context)
 
 
 def ask(request):
-    context = {'is_auth': authFlag}
     return render(request, 'ask.html', context=context)
 
 
 def hot(request):
-    context = {'questions': paginate(models.HOT_QUESTIONS, request), 'is_auth': authFlag}
+    context['questions'] = paginate(Question.objects.hot(), request)
     return render(request, 'hot_questions.html', context=context)
 
 
 def tag(request, tag_name):
-    context = {'is_auth': authFlag}
     try:
-        context = {'questions': paginate(models.QUESTIONS, request), 'is_auth': authFlag, 'tag_name': tag_name}
+        context['questions'] = paginate(Question.objects.get_by_tag(tag_name), request)
+        context['tag_name'] = tag_name
         return render(request, 'questions_list.html', context=context)
 
     except:
         return render(request, '404.html', context=context)
+
+
+context = {
+        'popular_tags': Tag.objects.popular(),
+        'best_members': Profile.objects.best(),
+        'is_auth': authFlag
+}

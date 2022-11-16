@@ -7,16 +7,22 @@
                 <img src="{% static 'img/picture.png' %}">
             </div>
             <div class="text-start">
-                <a href="">
+                <a href="{% url 'question' question_id=question.id %}">
                     <h5 class="card-title">{{ question.title }}</h5>
                 </a>
                 <p class="card-text">{{ question.text }}</p>
+                <div class="d-flex d-grid gap-3 align-items-baseline">
+                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    <p class="text-bold">
+                        {{ question.rating }}
+                    </p>
+                </div>
                 <div class="d-flex d-grid gap-3">
                     <a href="#">answer ({{question.answers_number}})</a>
                     <div class="d-flex d-grid gap-1">
                         <p>Tags:</p>
                         <div class="d-flex d-grid gap-2">
-                            {% for tag in question.tags %}
+                            {% for tag in question.tags.all %}
                                 <a href="/tag/{{ tag }}">{{ tag }}</a>
                             {% endfor %}
                         </div>

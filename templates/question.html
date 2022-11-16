@@ -17,7 +17,7 @@
                         <div class="d-flex d-grid gap-1">
                             <p>Tags:</p>
                             <div class="d-flex d-grid gap-2">
-                                {% for tag in question.tags %}
+                                {% for tag in question.tags.all %}
                                     <a href="/tag/{{ tag }}">{{ tag }}</a>
                                 {% endfor %}
                             </div>
@@ -26,55 +26,9 @@
                 </div>
             </div>
         </div>
-        <div class="card mt-3">
-            <div class="card-body">
-                <div class="d-flex">
-                    <div class="avatar">
-                        <img src="{% static 'img/picture.png' %}">
-                    </div>
-                    <div class="text-start">
-                        <p class="card-text">With supporting text below as a natural
-                            lead-in to additional
-                            content. With supporting text below as a natural lead-in to additional. With
-                            supporting text below as a natural lead-in to additional
-                        </p>
-                        <div class="d-flex d-grid gap-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="">
-                                <label class="form-check-label" for="">
-                                    Correct
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card mt-3">
-            <div class="card-body">
-                <div class="d-flex">
-                    <div class="avatar">
-                        <img src="{% static 'img/picture.png' %}">
-                    </div>
-                    <div class="text-start">
-                        <p class="card-text">With supporting text below as a natural
-                            lead-in to additional
-                            content. With supporting text below as a natural lead-in to additional. With
-                            supporting text below as a natural lead-in to additional
-                        </p>
-                        <div class="d-flex d-grid gap-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
-                                       disabled>
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Correct
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% for answer in answers.all%}
+            {% include 'inc/answer_item.html' %}
+        {% endfor %}
         <div class="col pt-1 border-top mt-3">
             <div class="d-flex row g-3 align-items-center mt-2">
                 <div class="col">
@@ -85,7 +39,6 @@
             </div>
         </div>
     </div>
-    {% include 'inc/paginator.html' %}
 </div>
 
 {% endblock %}

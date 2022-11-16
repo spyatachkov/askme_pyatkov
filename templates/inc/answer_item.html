@@ -1,0 +1,29 @@
+
+{% load static %}
+
+<div class="card mt-3">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="avatar">
+                        <img src="{% static 'img/picture.png' %}">
+                    </div>
+                    <div class="text-start">
+                        <p class="card-text"> {{ answer.text }} </p>
+                        <div class="d-flex d-grid gap-3">
+                            <div class="form-check">
+                            {% if answer.correct %}
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                                       disabled>
+                            {% else %}
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                                       disabled>
+                            {% endif %}
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Correct
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

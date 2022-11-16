@@ -31,12 +31,12 @@
 
             <div class="text-end">
                 <div class="d-flex flex-wrap">
-                {% if is_auth %}
+                {% if user.is_authenticated %}
                     <div class="avatar">
                         <img src="{% static 'img/picture.png' %}">
                     </div>
                     <div>
-                        <div>Dr. Pepper</div>
+                        <div>{{ user.username }}</div>
                         <div>
                             <a href="{% url 'settings' %}">settings</a>
                             <a href="#">log out</a>
@@ -68,10 +68,9 @@
                 <div>
                     <h5 class="">Popular Tags</h5>
                     <div class="">
-                        <a href="">perl</a>
-                        <a href="">python</a>
-                        <a href="">technopark</a>
-                        <a href="">MySQL</a>
+                        {% for tag in popular_tags.all %}
+                            <a href="{% url 'tag' tag_name=tag.name %}">{{ tag.name }}</a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -79,10 +78,9 @@
                 <div>
                     <h5>Best Members</h5>
                     <div class="d-flex flex-column">
-                        <a href="">Mr. Freeman</a>
-                        <a href="">Dr. House</a>
-                        <a href="">Alex</a>
-                        <a href="">V. Pupkin</a>
+                        {% for member in best_members.all %}
+                            <a href="">{{ member.user }}</a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
