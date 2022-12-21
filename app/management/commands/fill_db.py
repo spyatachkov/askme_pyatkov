@@ -17,7 +17,7 @@ def fill_tags(count):
 
 def fill_profiles(count):
     for i in range(count):
-        user = User.objects.create_user(f'{fake.name()}{fake.random_int(min=0, max=10)}', fake.email(), fake.password())
+        user = User.objects.create_user(f'{fake.name()}{fake.random_int(min=1, max=100)}{fake.random_int(min=200, max=300)}', fake.email(), fake.password())
         user.save()
 
         Profile.objects.create(
@@ -32,8 +32,8 @@ def fill_questions(count):
 
     for i in range(count):
         q = Question.objects.create(
-            title=' '.join(fake.sentences(fake.random_int(min=3, max=4))),
-            text=' '.join(fake.sentences(fake.random_int(min=20, max=25))),
+            title = ' '.join(fake.sentences(fake.random_int(min=1, max=2))),
+            text=' '.join(fake.sentences(fake.random_int(min=10, max=12))),
             author=Profile.objects.get(pk=choice(profiles_id)),
             rating=fake.random_int(min=-100, max=100),
             answers_number=0,

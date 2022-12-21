@@ -66,7 +66,7 @@ class QuestionManager(models.Manager):
 
 
 class Question(models.Model):
-    title = models.CharField(max_length=100, unique=False)
+    title = models.CharField(max_length=200, unique=False)
     text = models.TextField()
     author = models.ForeignKey(Profile, models.SET_NULL, null=True)
     tags = models.ManyToManyField(Tag, blank=True)
